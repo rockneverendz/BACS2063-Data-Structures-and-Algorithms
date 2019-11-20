@@ -1,45 +1,45 @@
 public interface StackADT<T> {
     
-    /**
-     * Description: add newEntry to the last location
-     * Precondition: newEntry is not null
-     * Postcondition: newEntry is added
-     *                stack size increase.Return: nothing
-     * Return: nothing
+    /*
+     * Description  : Add item to the last location
+     * Precondition : Item is not null
+     * Postcondition: Item is added,
+     *                Stack size increases
+     * Return       : nothing
      */
-    public void push(T newEntry);
+    public void push(T item);
 
-    /**
-     * Description: to return the last item
-     * Precondition: the stack is not empty
-     * Postcondition: the item is removed
-     *                stack size decreased
-     * Return: the last item
+    /*
+     * Description  : Returns the last item
+     * Precondition : Stack is not empty
+     * Postcondition: Item is removed,
+     *                Stack size decreased
+     * Return       : Last item
      */
     public T pop();
     
-    /**
-     * Description: to return the last item
-     * Precondition: the stack is not empty
-     * Postcondition: nothing
-     * Return: the last item
+    /*
+     * Description  : Return the last item
+     * Precondition : Stack is not empty
+     * Postcondition: 
+     * Return       : Last item
      */
     public T peek();
     
-    /**
-     * Description: the check the stack is empty or not
-     * Precondition: nothing
+    /*
+     * Description  : Check the stack is empty or not
+     * Precondition : 
      * Postcondition: 
-     * Return: true if empty
-     *         false if not
+     * Return       : True if empty,
+     *                False if not
      */
     public boolean isEmpty();
     
-    /**
-     * Description: to clear the stack
-     * Precondition: none
-     * Postcondition: the stack becomes empty 
-     * Return: none
+    /*
+     * Description  : Clear the stack
+     * Precondition : 
+     * Postcondition: Stack becomes empty 
+     * Return       : 
      */
     public void clear();
 }
