@@ -1,14 +1,15 @@
-public interface CollectionADT<E> {
+package util;
+
+public interface ICollection<E> {
 
     /*
      * Description  : Add element into collection
      * Precondition : Collection exists
      * Postcondition: Element is added into collection
-     * Return       : true   - Element is added
-     *                false  - Element is not added
+     * Return       : 
      */
-    public boolean add(E e);
-    
+    public void add(E e);
+
     /*
      * Description  : Removes all of the elements from this collection
      * Precondition : 
@@ -16,16 +17,7 @@ public interface CollectionADT<E> {
      * Return       : 
      */
     public void clear();
-    
-    /*
-     * Description  : Compares the specified object with this collection for equality
-     * Precondition : 
-     * Postcondition: 
-     * Return       : true   - Elements are the same
-     *                false  - Elements are not the same
-     */
-    public boolean equals(Object o);
-    
+
     /*
      * Description  : Returns the hash code value for this collection
      * Precondition : 
@@ -33,7 +25,7 @@ public interface CollectionADT<E> {
      * Return       : Hash code value for this collection
      */
     public int hashCode();
-    
+
     /*
      * Description  : Returns true if this collection contains no elements
      * Precondition : 
@@ -42,7 +34,7 @@ public interface CollectionADT<E> {
      *                false  - Collection is not empty
      */
     public boolean isEmpty();
-    
+
     /*
      * Description  : Removes a single instance of the specified element from this collection, if it is present
      * Precondition : Element exists inside collection
@@ -51,7 +43,7 @@ public interface CollectionADT<E> {
      *                false  - Element is not removed from collection
      */
     public boolean remove(Object o);
-    
+
     /*
      * Description  : Returns the number of elements in this collection
      * Precondition : 
@@ -60,7 +52,7 @@ public interface CollectionADT<E> {
      *                false  - Element is not removed from collection
      */
     public int size();
-    
+
     /*
      * Description  : Returns an array containing all of the elements in this collection.
      * Precondition : 
