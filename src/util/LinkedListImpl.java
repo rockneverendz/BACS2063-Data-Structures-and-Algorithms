@@ -101,22 +101,31 @@ public class LinkedListImpl<E>
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return size;
     }
 
     @Override
     public boolean add(E e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        insertTail(e);
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        remove(indexOf(o));
+        return true;
     }
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object[] array = new Object[size];
+        int i = 0;
+        for (Node<E> node = head;
+                node != null;
+                node = node.next) {
+            array[i++] = node.data;
+        }
+        return array;
     }
 
     /*
