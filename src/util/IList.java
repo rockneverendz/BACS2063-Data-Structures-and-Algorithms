@@ -34,7 +34,7 @@ public interface IList<E> extends ICollection<E> {
      * Return       : Hash code value for this list
      */
     public int hashCode();
-    
+
     /*
      * Description  : Return the index of data located in the list
      * Precondition : List is not empty
@@ -57,9 +57,9 @@ public interface IList<E> extends ICollection<E> {
      * Precondition : List is not empty
      *              : Index is valid
      * Postcondition: Data is removed from the list
-     * Return       : The element previously at the specified position
+     * Return       : 
      */
-    public E remove(int index);
+    public void remove(int index);
 
     /*
      * Description  : Returns the number of elements in this list

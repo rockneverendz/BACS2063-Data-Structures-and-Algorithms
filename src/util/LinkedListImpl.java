@@ -76,8 +76,27 @@ public class LinkedListImpl<E>
     }
 
     @Override
-    public E remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void remove(int index) {
+        checkElementIndex(index);
+        
+        /*
+         * For remove(i), there are three (legal) possibilities, i.e. index i is:
+         *
+         * The head (the current first item) of the linked list, i = 0, it affects the head pointer
+         * The tail of the linked list, i = N-1, it affects the tail pointer
+         * The other positions of the linked list, i = [1..N-2].
+         */
+        
+        if (index == 0) {
+            removeHead();
+        } else if (index == size) {
+            removeTail();
+        } else {
+            removeMiddle(node(index));
+        }
+        
+        // Decrement size counter
+        size--;
     }
 
     @Override
@@ -192,5 +211,49 @@ public class LinkedListImpl<E>
         
         // Update oldNode's prev
         oldNode.prev = node;
+    }
+
+    private void removeHead() {
+        // Temporary store the head
+        Node oldHead = head;
+        
+        // Transfer the head
+        head = oldHead.next;
+        head.prev = null;
+        
+        // Help garbage collection
+        // oldHead.prev = null; // head's prev is already a null
+        oldHead.data = null;
+        oldHead.next = null;
+    }
+
+    private void removeTail() {
+        // Temporary store the tail
+        Node oldTail = tail;
+
+        // Transfer the tail
+        tail = oldTail.prev;
+        tail.prev = null;
+
+        // Help garbage collection
+        oldTail.prev = null;
+        oldTail.data = null;
+        // oldTail.next = null; // tail's next is already a null        
+    }
+
+    private void removeMiddle(Node<E> node) {
+        // Temporary store the node
+        Node oldNode = node;
+        Node nextNode = node.next;
+        Node prevNode = node.prev;
+        
+        // Relink both next and prev
+        nextNode.prev = prevNode;
+        prevNode.next = nextNode;
+
+        // Help garbage collection
+        oldNode.prev = null;
+        oldNode.data = null;
+        oldNode.next = null;
     }
 }
