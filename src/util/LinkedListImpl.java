@@ -33,7 +33,23 @@ public class LinkedListImpl<E>
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        // Clearing all of the links between nodes is "unnecessary", but:
+        // - helps a generational GC if the discarded nodes inhabit
+        //   more than one generation
+        // - is sure to free memory even if there is a reachable Iterator
+        Node<E> temp = head;
+        while (temp != head) {
+            Node<E> next = temp.next;
+            temp.data = null;
+            temp.next = null;
+            temp.prev = null;
+            temp = next;
+        }
+
+        head = null;
+        tail = null;
+        size = 0;
     }
 
     @Override
