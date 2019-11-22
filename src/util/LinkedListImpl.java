@@ -38,7 +38,8 @@ public class LinkedListImpl<E>
 
     @Override
     public E get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        checkElementIndex(index);
+        return node(index).data;
     }
 
     @Override
