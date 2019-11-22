@@ -1,5 +1,6 @@
 package util;
 
+//import java.util.LinkedList;
 public class LinkedListImpl<E>
         implements IList<E> {
 
@@ -10,7 +11,7 @@ public class LinkedListImpl<E>
     @Override
     public void add(int index, E data) {
         checkPositionIndex(index);
-        
+
         /* 
          * The cases:
          * 1. An empty linked list,
@@ -18,22 +19,19 @@ public class LinkedListImpl<E>
          * 3. The position beyond the last (the current tail) item of the linked list, i = N,
          * 4. The other positions of the linked list, i = [1..N-1].
          */
-        
-        if (size == 0)
+        if (size == 0) {
             insertNew(data);
-        else if (index == 0)
+        } else if (index == 0) {
             insertHead(data);
-        else if (index == size)
+        } else if (index == size) {
             insertTail(data);
-        else
-            insert(data, node(index));
-        
-        
+        } else {
+            insertMiddle(data, node(index));
+        }
     }
 
     @Override
     public void clear() {
-
         // Clearing all of the links between nodes is "unnecessary", but:
         // - helps a generational GC if the discarded nodes inhabit
         //   more than one generation
@@ -78,7 +76,7 @@ public class LinkedListImpl<E>
     @Override
     public void remove(int index) {
         checkElementIndex(index);
-        
+
         /*
          * For remove(i), there are three (legal) possibilities, i.e. index i is:
          *
@@ -86,7 +84,6 @@ public class LinkedListImpl<E>
          * The tail of the linked list, i = N-1, it affects the tail pointer
          * The other positions of the linked list, i = [1..N-2].
          */
-        
         if (index == 0) {
             removeHead();
         } else if (index == size) {
@@ -94,9 +91,6 @@ public class LinkedListImpl<E>
         } else {
             removeMiddle(node(index));
         }
-        
-        // Decrement size counter
-        size--;
     }
 
     @Override
@@ -146,14 +140,14 @@ public class LinkedListImpl<E>
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
     }
-    
+
     /*
      * Constructs an IndexOutOfBoundsException detail message.
      */
     private String outOfBoundsMsg(int index) {
         return "Index: " + index + ", Size: " + size;
     }
-    
+
     /*
      * Returns the (non-null) Node at the specified element index.
      */
@@ -163,7 +157,6 @@ public class LinkedListImpl<E>
         // Else loop from tail.
         // Best case O(1)
         // Worst case O(n)
-        
         if (index < (size >> 1)) {
             Node<E> node = head;
             for (int i = 0; i < index; i++) {
@@ -182,20 +175,24 @@ public class LinkedListImpl<E>
     private void insertNew(E data) {
         // Create a new node
         Node<E> node = new Node(null, data, null);
-        
+
         // New head of the list
         head = node;
+        
+        size++;
     }
 
     private void insertHead(E data) {
         // Create a new node, with it's next points to the old head.
         Node<E> node = new Node(null, data, head);
-        
+
         // Update old head prev
         head.prev = node;
-        
+
         // New head of the list
         head = node;
+        
+        size++;
     }
 
     private void insertTail(E data) {
@@ -207,33 +204,39 @@ public class LinkedListImpl<E>
 
         // New tail of the list
         tail = node;
+        
+        size++;
     }
 
-    private void insert(E data, Node<E> oldNode) {
+    private void insertMiddle(E data, Node<E> oldNode) {
         // Create a new node with ;- 
-        // prev pointing to what's pointed by oldNode.prev
-        // next pointing to the oldNode.
+        // prev - pointing to what's pointed by oldNode.prev
+        // next - pointing to the oldNode.
         Node<E> node = new Node(oldNode.prev, data, oldNode);
 
         // Update oldNode.prev's next
         oldNode.prev.next = node;
-        
+
         // Update oldNode's prev
         oldNode.prev = node;
+        
+        size++;
     }
 
     private void removeHead() {
         // Temporary store the head
         Node oldHead = head;
-        
+
         // Transfer the head
         head = oldHead.next;
         head.prev = null;
-        
+
         // Help garbage collection
         // oldHead.prev = null; // head's prev is already a null
         oldHead.data = null;
         oldHead.next = null;
+        
+        size--;
     }
 
     private void removeTail() {
@@ -248,6 +251,8 @@ public class LinkedListImpl<E>
         oldTail.prev = null;
         oldTail.data = null;
         // oldTail.next = null; // tail's next is already a null        
+        
+        size--;
     }
 
     private void removeMiddle(Node<E> node) {
@@ -255,7 +260,7 @@ public class LinkedListImpl<E>
         Node oldNode = node;
         Node nextNode = node.next;
         Node prevNode = node.prev;
-        
+
         // Relink both next and prev
         nextNode.prev = prevNode;
         prevNode.next = nextNode;
@@ -264,5 +269,7 @@ public class LinkedListImpl<E>
         oldNode.prev = null;
         oldNode.data = null;
         oldNode.next = null;
+        
+        size--;
     }
 }
