@@ -39,7 +39,8 @@ public interface IList<E> extends ICollection<E> {
      * Description  : Return the index of data located in the list
      * Precondition : List is not empty
      * Postcondition: 
-     * Return       : Index of the data location
+     * Return       : 0-n   - Index of the data location
+     *              : -1    - Data doesn't exists in list.
      */
     public int indexOf(Object o);
 

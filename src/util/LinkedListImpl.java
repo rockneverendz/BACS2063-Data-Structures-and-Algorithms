@@ -60,7 +60,14 @@ public class LinkedListImpl<E>
 
     @Override
     public int indexOf(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int index = 0;
+        for (Node<E> x = head; x != null; x = x.next) {
+            if (o.equals(x.data)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
     @Override
