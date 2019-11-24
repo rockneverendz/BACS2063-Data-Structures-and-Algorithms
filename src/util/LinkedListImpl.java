@@ -122,6 +122,18 @@ public class LinkedListImpl<E>
         return array;
     }
 
+    private static class Node<E> {
+        E data;
+        Node<E> next;
+        Node<E> prev;
+
+        Node(Node<E> prev, E data, Node<E> next) {
+            this.data = data;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+
     /*
      * Tells if the argument is the index of an existing element.
      */
