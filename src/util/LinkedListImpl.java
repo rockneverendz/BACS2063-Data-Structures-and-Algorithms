@@ -1,13 +1,12 @@
 package util;
 
-//import java.util.LinkedList;
 public class LinkedListImpl<E>
         implements IList<E> {
-
-    int size = 0;
-    Node head;
-    Node tail;
-
+    
+    private int size = 0;
+    private Node head;
+    private Node tail;
+    
     @Override
     public void add(int index, E data) {
         checkPositionIndex(index);
@@ -86,7 +85,7 @@ public class LinkedListImpl<E>
          */
         if (index == 0) {
             removeHead();
-        } else if (index == size) {
+        } else if (index == size - 1) {
             removeTail();
         } else {
             removeMiddle(node(index));
@@ -100,7 +99,11 @@ public class LinkedListImpl<E>
 
     @Override
     public boolean add(E e) {
-        insertTail(e);
+        if (tail != null) {
+            insertTail(e);
+        } else {
+            insertNew(e);
+        }
         return true;
     }
 
@@ -123,6 +126,7 @@ public class LinkedListImpl<E>
     }
 
     private static class Node<E> {
+
         E data;
         Node<E> next;
         Node<E> prev;
@@ -188,9 +192,10 @@ public class LinkedListImpl<E>
         // Create a new node
         Node<E> node = new Node(null, data, null);
 
-        // New head of the list
+        // New head and tail of the list
         head = node;
-        
+        tail = node;
+
         size++;
     }
 
@@ -203,7 +208,7 @@ public class LinkedListImpl<E>
 
         // New head of the list
         head = node;
-        
+
         size++;
     }
 
@@ -216,7 +221,7 @@ public class LinkedListImpl<E>
 
         // New tail of the list
         tail = node;
-        
+
         size++;
     }
 
@@ -231,7 +236,7 @@ public class LinkedListImpl<E>
 
         // Update oldNode's prev
         oldNode.prev = node;
-        
+
         size++;
     }
 
@@ -247,7 +252,7 @@ public class LinkedListImpl<E>
         // oldHead.prev = null; // head's prev is already a null
         oldHead.data = null;
         oldHead.next = null;
-        
+
         size--;
     }
 
@@ -263,7 +268,7 @@ public class LinkedListImpl<E>
         oldTail.prev = null;
         oldTail.data = null;
         // oldTail.next = null; // tail's next is already a null        
-        
+
         size--;
     }
 
@@ -281,7 +286,7 @@ public class LinkedListImpl<E>
         oldNode.prev = null;
         oldNode.data = null;
         oldNode.next = null;
-        
+
         size--;
     }
 }
