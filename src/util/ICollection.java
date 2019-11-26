@@ -4,7 +4,7 @@ public interface ICollection<E> {
 
     /*
      * Description  : Add element into collection
-     * Precondition : Collection exists
+     * Precondition : 
      * Postcondition: Element is added into collection
      * Return       : 
      */
@@ -48,8 +48,7 @@ public interface ICollection<E> {
      * Description  : Returns the number of elements in this collection
      * Precondition : 
      * Postcondition: 
-     * Return       : true   - Element is removed from collection
-     *                false  - Element is not removed from collection
+     * Return       : The number of elements in this collection
      */
     public int size();
 
