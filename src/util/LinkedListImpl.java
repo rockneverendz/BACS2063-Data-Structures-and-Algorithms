@@ -98,13 +98,12 @@ public class LinkedListImpl<E>
     }
 
     @Override
-    public boolean add(E e) {
+    public void add(E e) {
         if (tail != null) {
             insertTail(e);
         } else {
             insertNew(e);
         }
-        return true;
     }
 
     @Override
