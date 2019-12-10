@@ -14,6 +14,10 @@ public class Laptop extends Product {
     public Laptop() {
     }
 
+    public Laptop(String model) {
+        this.model = model;
+    }
+
     public Laptop(String name, String brand, double price, int stock, String model, CPU Processor, GPU Graphics, int memory, int storage, double display, double weight, String color) {
 
         super(name, price, stock, brand);
