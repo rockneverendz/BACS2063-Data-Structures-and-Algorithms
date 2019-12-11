@@ -5,9 +5,9 @@ import java.util.Objects;
 public class HashSetImpl<K, V> implements IMap<K, V> {
 
     transient Node<K, V>[] table;
-    double loadFactor = 0.75;
-    int threshold;
-    int size;
+    final private double loadFactor;
+    private int threshold;
+    private int size;
 
     // https://www.baeldung.com/java-hashcode
     // implement hashCode() inside object classes 
@@ -56,9 +56,11 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
     }
 
     public HashSetImpl() {
+        this.loadFactor = 0.75;
     }
 
     public HashSetImpl(int capacity) {
+        this.loadFactor = 0.75;
         this.threshold = tableSizeFor(capacity);
     }
 
@@ -102,9 +104,9 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
                 If it's not null
                     place head to temp
                     delete temp
-                    case 1 : temp.next is null
+                    case 1 : it's the only node
                         place temp in newTable[temp.hash AND with newCapacity -1]
-                    case 2 : temp.next is not null
+                    case 2 : it's not the only node
                         do
                             case 1 : resizing will not cause repositioning of node
                                 add to low list
@@ -122,8 +124,8 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
          */
         if (oldTable != null) {
             for (int j = 0; j < oldCapacity; ++j) {
-                Node<K, V> temp;
-                if ((temp = oldTable[j]) != null) {
+                Node<K, V> temp = oldTable[j];
+                if (temp != null) {
                     oldTable[j] = null;
                     if (temp.next == null) {
                         newTable[temp.hash & (newCapacity - 1)] = temp;
@@ -136,6 +138,7 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
                                     lowHead = temp;
                                 } else {
                                     lowTail.next = temp;
+                                    temp.prev = lowTail;
                                 }
                                 lowTail = temp;
                             } else {
@@ -143,6 +146,7 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
                                     highHead = temp;
                                 } else {
                                     highTail.next = temp;
+                                    temp.prev = highTail;
                                 }
                                 highTail = temp;
                             }
@@ -176,9 +180,10 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
          */
         if (tableExists()) {
             if (table[index] != null) {
-                temp = table[index];
 
-                if (exists(hash, key, temp)) {
+                temp = getNode(hash, key, table[index]);
+                
+                if (temp != null) {
                     return temp.value;
                 } else {
                     return null;
@@ -217,10 +222,12 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
         if (temp == null) {
             table[index] = new Node(hash, key, value);
         } else {
-            if (!exists(hash, key, temp)) {
+            temp = getNode(hash, key, temp);
+            if (temp == null) {
                 Node<K, V> newNode = new Node(hash, key, value);
-                newNode.prev = temp;
-                temp.next = newNode;
+                table[index].prev = newNode;
+                newNode.next = table[index];
+                table[index] = newNode;
             } else {
                 oldValue = temp.value;
                 temp.value = value;
@@ -272,9 +279,9 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
                     return oldValue;
                 }
 
-                temp = temp.next;
-
-                if (exists(hash, key, temp)) {
+                temp = getNode(hash, key, temp.next);
+                
+                if (temp != null) {
                     if (temp.next != null) {
                         temp.next.prev = temp.prev;
                         temp.next = null;
@@ -360,19 +367,19 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
     }
 
     /*
-     * Description  : Find the matching node through the node list
+     * Description  : Find the matching node through the node list 
+     *                begin from the specified node
      * Return       : true  - A match!
      *                false - No matching nodes
      */
-    private boolean exists(int hash, Object key, Node<K, V> node) {
+    private Node<K, V> getNode(int hash, Object key, Node<K, V> node) {
         while (compareKeys(hash, key, node) == false) {
             if (node.next == null) {
-                return false;
-            } else {
-                node = node.next;
+                return null;
             }
+            node = node.next;
         }
-        return true;
+        return node;
     }
 
     /*

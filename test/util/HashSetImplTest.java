@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
 
 import model.Laptop;
@@ -13,13 +8,18 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Verniy
- */
 public class HashSetImplTest {
 
-    Laptop laptop[];
+    Laptop laptop[] = new Laptop[]{
+        new Laptop("Asus"),
+        new Laptop("Beagle"),
+        new Laptop("Corsair"),
+        new Laptop("Dell"),
+        new Laptop("Enigma"),
+        new Laptop("Ford"),
+        new Laptop("Gravity"),
+        new Laptop("HP")
+    };
 
     public HashSetImplTest() {
     }
@@ -34,33 +34,10 @@ public class HashSetImplTest {
 
     @Before
     public void setUp() {
-        laptop = new Laptop[]{
-            new Laptop("A"),
-            new Laptop("B"),
-            new Laptop("C"),
-            new Laptop("D"),
-            new Laptop("E"),
-            new Laptop("F"),
-            new Laptop("G"),
-            new Laptop("H"),};
     }
 
     @After
     public void tearDown() {
-    }
-
-    /**
-     * Test of hash method, of class HashSetImpl.
-     */
-    @Test
-    public void testHash() {
-        System.out.println("hash");
-        Object key = null;
-        int expResult = 0;
-        int result = HashSetImpl.hash(key);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -94,14 +71,31 @@ public class HashSetImplTest {
      */
     @Test
     public void testGet() {
-        System.out.println("get");
-        Object key = null;
+        System.out.println("put");
         HashSetImpl instance = new HashSetImpl();
-        Object expResult = null;
-        Object result = instance.get(key);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        initializeHashset(instance);
+
+        if (instance.get(0) != laptop[0]) {
+            fail();
+        }
+
+        if (instance.get(2) != laptop[2]) {
+            fail();
+        }
+
+        if (instance.get(8) != null) {
+            fail();
+        }
+
+        if (instance.get(0) != laptop[0]) {
+            fail();
+        }
+
+        if (instance.get(32) != laptop[2]) {
+            fail();
+        }
+
     }
 
     /**
@@ -112,22 +106,26 @@ public class HashSetImplTest {
         System.out.println("put");
         HashSetImpl instance = new HashSetImpl();
 
-        Object key = "sampleKey";
-        Object value = laptop;
+        initializeHashset(instance);
 
-        for (int i = 0; i < laptop.length; i++) {
-            instance.put(i, laptop[i]);
+        if (instance.size() != 16) {
+            fail();
         }
 
-        for (int i = 0; i < laptop.length; i++) {
-            instance.put(i * 16, laptop[i]);
+        // Test overwriting of nodes
+        instance.put(0, laptop[7]);
+
+        if (instance.get(0) != laptop[7] || instance.size() != 17) {
+            fail();
         }
-        
-        Object expResult = null;
-        Object result = instance.put(key, value);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        // Test removal of nodes
+        instance.remove(0);
+
+        if (instance.get(0) != null || instance.size() != 16) {
+            fail();
+        }
+
     }
 
     /**
@@ -201,4 +199,15 @@ public class HashSetImplTest {
         fail("The test case is a prototype.");
     }
 
+    private void initializeHashset(HashSetImpl instance) {
+        // Test node in different indices
+        for (int i = 0; i < laptop.length; i++) {
+            instance.put(i, laptop[i]);
+        }
+
+        // Test node in same indies
+        for (int i = 0; i < laptop.length; i++) {
+            instance.put((i + 1) * 16, laptop[i]);
+        }
+    }
 }
