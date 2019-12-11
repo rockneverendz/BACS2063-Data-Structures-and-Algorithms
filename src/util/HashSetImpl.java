@@ -64,7 +64,7 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return size;
     }
 
     final void resize() {
@@ -165,7 +165,27 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
 
     @Override
     public V get(Object key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int hash = hash(key);
+        int index = (table.length - 1) & hash;
+        Node<K, V> temp;
+
+        /*
+        case 1 : table is not empty and have valid length
+            case 1.1 : the index contain nodes
+                loop through the nodes
+         */
+        if (tableExists()) {
+            if (table[index] != null) {
+                temp = table[index];
+
+                if (exists(hash, key, temp)) {
+                    return temp.value;
+                } else {
+                    return null;
+                }
+            }
+        }
+        return null;
     }
 
     @Override
@@ -174,8 +194,8 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
         V oldValue = null;
         int hash = hash(key);
         int index;
-        
-        if (table == null || table.length == 0) {
+
+        if (!tableExists()) {
             resize();
         }
 
@@ -188,47 +208,16 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
         temp = table[index];
 
         /*
-        case 1 : the specified location is empty
-        case 2 : the specified location contain nodes
-            case 1 : the first node matches hash and key
-                ndoe exists
-            case 2 : else
-                for every linkedNode (start from second node)
-                    temp = node
-                    if temp == null
-                        newNode
-                        break
-                    if node matches hash and key (not null)
-                        node exists
-                        break
-            if node exists
-                replace node
-                return old node
-        increse size
-        if size > threshold
-            resize
-        
-        */
-        
+        case 1 : there's no node here
+        case 2 : there's node here
+            loop through the nodes
+            case 2.1 : there's no matching nodes. (new node)
+            case 2.2 : temp is the matching nodes. (replace node)
+         */
         if (temp == null) {
             table[index] = new Node(hash, key, value);
         } else {
-            boolean noMatches = false;
-
-            while (compareKeys(hash, key, temp) == false) {
-                if (temp.next == null) {
-                    noMatches = true;
-                    break;
-                } else {
-                    temp = temp.next;
-                }
-            }
-
-            /*
-            case 1 : there's no matching nodes. (new node)
-            case 2 : temp is the matching nodes. (replace node)
-             */
-            if (noMatches) {
+            if (!exists(hash, key, temp)) {
                 Node<K, V> newNode = new Node(hash, key, value);
                 newNode.prev = temp;
                 temp.next = newNode;
@@ -236,44 +225,128 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
                 oldValue = temp.value;
                 temp.value = value;
             }
-
-            if (++size > threshold) {
-                resize();
-            }
+        }
+        if (++size > threshold) {
+            resize();
         }
         return oldValue;
     }
 
     @Override
     public V remove(Object key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        V oldValue;
+        int hash = hash(key);
+        int index = (table.length - 1) & hash;
+        Node<K, V> temp;
+
+        /*
+        case 1 : table is not empty and have valid length
+            case 1.1 : the index contain nodes
+                case 1.1.1 : it's the first node
+                    case 1.1.1.1 : the only node in the index
+                        empty out the index
+                    case 1.1.1.2 : at least two nodes in the index
+                        update next node
+                    reduce size
+                    return old value
+                case 1.1.2 : its the middle or last node
+                    update next pointer (if there's any)
+                    update prev pointer
+                    
+         */
+        if (tableExists()) {
+            if (table[index] != null) {
+                temp = table[index];
+
+                if (compareKeys(hash, key, temp)) {
+                    if (temp.next == null) {
+                        table[index] = null;
+                    } else {
+                        temp.next.prev = temp.prev;
+                        temp.next = null;
+                    }
+
+                    --size;
+                    oldValue = temp.value;
+                    temp.value = null;
+                    return oldValue;
+                }
+
+                temp = temp.next;
+
+                if (exists(hash, key, temp)) {
+                    if (temp.next != null) {
+                        temp.next.prev = temp.prev;
+                        temp.next = null;
+                    }
+
+                    temp.prev.next = temp.next;
+                    temp.prev = null;
+
+                    --size;
+                    oldValue = temp.value;
+                    temp.value = null;
+                    return oldValue;
+                }
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return size == 0;
     }
 
     @Override
     public boolean containsKey(Object key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        V value = get(key);
+        return (value != null);
     }
 
     @Override
     public boolean containsValue(Object value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node<K, V>[] tab;
+        V v;
+
+        /*
+        case 1 : table is not empty and have at least one node
+            for every index in the table
+                for every node in the index
+                    case 1.1 : values match
+                        return true
+         */
+        if ((tab = table) != null && size > 0) {
+            for (int i = 0; i < tab.length; ++i) {
+                for (Node<K, V> e = tab[i]; e != null; e = e.next) {
+                    if ((v = e.value) == value
+                            || (value != null && value.equals(v))) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (tableExists()) {
+            size = 0;
+            for (int i = 0; i < table.length; i++) {
+                table[i] = null;
+            }
+        }
+
+    }
+
+    private boolean tableExists() {
+        return table != null && table.length > 0;
     }
 
     /*
      * https://stackoverflow.com/questions/51118300
      * Description  : Returns x where (x > cap) and x is a power of 2
-     * Precondition : 
-     * Postcondition: 
      * Return       : x where (x > cap) and x is a power of 2
      */
     private int tableSizeFor(int cap) {
@@ -287,27 +360,29 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
     }
 
     /*
+     * Description  : Find the matching node through the node list
+     * Return       : true  - A match!
+     *                false - No matching nodes
+     */
+    private boolean exists(int hash, Object key, Node<K, V> node) {
+        while (compareKeys(hash, key, node) == false) {
+            if (node.next == null) {
+                return false;
+            } else {
+                node = node.next;
+            }
+        }
+        return true;
+    }
+
+    /*
      * Description  : Compares the node with the specified key and hash
-     * Precondition : 
-     * Postcondition: 
      * Return       : true  - Match
      *                false - Does not match
      */
-    private boolean compareKeys(int hash, K key, Node<K, V> node) {
-
+    private boolean compareKeys(int hash, Object key, Node<K, V> node) {
         K nodeKey = node.key;
 
-//        if (node.hash == hash) {
-//            if (nodeKey == key) {
-//                return true;
-//            } else if (key != null){
-//                if (key.equals(nodeKey)) {
-//                    return true;
-//                }
-//            } else {
-//                return false;
-//            }
-//        }
         return node.hash == hash
                 && (nodeKey == key || (key != null && key.equals(nodeKey)));
     }
