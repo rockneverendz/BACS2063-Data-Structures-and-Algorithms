@@ -8,7 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class HashSetImplTest {
+public class HashMapImplTest {
 
     Laptop laptop[] = new Laptop[]{
         new Laptop("Asus"),
@@ -21,7 +21,7 @@ public class HashSetImplTest {
         new Laptop("HP")
     };
 
-    public HashSetImplTest() {
+    public HashMapImplTest() {
     }
 
     @BeforeClass
@@ -41,12 +41,12 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of size method, of class HashSetImpl.
+     * Test of size method, of class HashMapImpl.
      */
     @Test
     public void testSize() {
         System.out.println("size");
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         int expResult = 0;
         int result = instance.size();
         assertEquals(expResult, result);
@@ -55,24 +55,24 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of resize method, of class HashSetImpl.
+     * Test of resize method, of class HashMapImpl.
      */
     @Test
     public void testResize() {
         System.out.println("resize");
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         instance.resize();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of get method, of class HashSetImpl.
+     * Test of get method, of class HashMapImpl.
      */
     @Test
     public void testGet() {
         System.out.println("put");
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
 
         initializeHashset(instance);
 
@@ -99,12 +99,12 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of put method, of class HashSetImpl.
+     * Test of put method, of class HashMapImpl.
      */
     @Test
     public void testPut() {
         System.out.println("put");
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
 
         initializeHashset(instance);
 
@@ -129,13 +129,13 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of remove method, of class HashSetImpl.
+     * Test of remove method, of class HashMapImpl.
      */
     @Test
     public void testRemove() {
         System.out.println("remove");
         Object key = null;
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         Object expResult = null;
         Object result = instance.remove(key);
         assertEquals(expResult, result);
@@ -144,12 +144,12 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of isEmpty method, of class HashSetImpl.
+     * Test of isEmpty method, of class HashMapImpl.
      */
     @Test
     public void testIsEmpty() {
         System.out.println("isEmpty");
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         boolean expResult = false;
         boolean result = instance.isEmpty();
         assertEquals(expResult, result);
@@ -158,13 +158,13 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of containsKey method, of class HashSetImpl.
+     * Test of containsKey method, of class HashMapImpl.
      */
     @Test
     public void testContainsKey() {
         System.out.println("containsKey");
         Object key = null;
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         boolean expResult = false;
         boolean result = instance.containsKey(key);
         assertEquals(expResult, result);
@@ -173,13 +173,13 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of containsValue method, of class HashSetImpl.
+     * Test of containsValue method, of class HashMapImpl.
      */
     @Test
     public void testContainsValue() {
         System.out.println("containsValue");
         Object value = null;
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         boolean expResult = false;
         boolean result = instance.containsValue(value);
         assertEquals(expResult, result);
@@ -188,18 +188,18 @@ public class HashSetImplTest {
     }
 
     /**
-     * Test of clear method, of class HashSetImpl.
+     * Test of clear method, of class HashMapImpl.
      */
     @Test
     public void testClear() {
         System.out.println("clear");
-        HashSetImpl instance = new HashSetImpl();
+        HashMapImpl instance = new HashMapImpl();
         instance.clear();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    private void initializeHashset(HashSetImpl instance) {
+    private void initializeHashset(HashMapImpl instance) {
         // Test node in different indices
         for (int i = 0; i < laptop.length; i++) {
             instance.put(i, laptop[i]);
