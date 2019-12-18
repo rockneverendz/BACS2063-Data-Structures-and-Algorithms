@@ -1,6 +1,12 @@
 package model;
 
-public class Laptop extends Product {
+import util.IComparable;
+import util.IComparator;
+
+public class Laptop 
+        extends Product 
+        implements IComparable<Laptop> 
+{
 
     private String model;
     private CPU Processor;
@@ -99,4 +105,18 @@ public class Laptop extends Product {
     public String toString() {
         return "Laptop{" + "model=" + model + ", Processor=" + Processor + ", Graphics=" + Graphics + ", memory=" + memory + ", storage=" + storage + ", display=" + display + ", weight=" + weight + ", color=" + color + '}';
     }
+
+    @Override
+    public int compareTo(Laptop o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static class SortLaptopByPrice implements IComparator<Laptop> {
+
+        @Override
+        public int compare(Laptop origin, Laptop target) {
+            return origin.getPrice().compareTo(target.getPrice());
+        }
+    }
 }
+

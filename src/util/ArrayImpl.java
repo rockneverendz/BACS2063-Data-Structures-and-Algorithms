@@ -2,6 +2,7 @@ package util;
 
 public class ArrayImpl implements IArray {
 
+    @Override
     public void mergeSort(Object[] a, int low, int high, IComparator c) {
         // the array to be sorted is a[low..high]
         if (low < high) { // base case: low >= high (0 or 1 item)
