@@ -8,12 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class MergeSortTest {
+public class ArrayImplTest {
 
     Laptop[] array;
     Laptop[] sorted;
 
-    public MergeSortTest() {
+    public ArrayImplTest() {
     }
 
     @BeforeClass
@@ -51,14 +51,14 @@ public class MergeSortTest {
     }
 
     /**
-     * Test of mergeSort method, of class MergeSort.
+     * Test of mergeSort method, of class ArrayImpl.
      */
     @Test
     public void testMergeSort() {
         System.out.println("mergeSort");
         int low = 0;
         int high = array.length - 1;
-        MergeSort instance = new MergeSort();
+        ArrayImpl instance = new ArrayImpl();
         instance.mergeSort((Object[]) array,
                 low,
                 high, 
