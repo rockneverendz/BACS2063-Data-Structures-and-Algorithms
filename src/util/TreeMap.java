@@ -4,7 +4,15 @@ public class TreeMap<K, V> implements IMap<K, V> {
 
     private Node<K, V> root;
     private int size = 0;
-    private IComparator<? super K> comparator;
+    private final IComparator<? super K> comparator;
+
+    public TreeMap() {
+        this.comparator = null;
+    }
+
+    public TreeMap(IComparator<? super K> comparator) {
+        this.comparator = comparator;
+    }
 
     @Override
     public int size() {
@@ -125,9 +133,9 @@ public class TreeMap<K, V> implements IMap<K, V> {
         } while (node != null);
 
         if (result < 0) {
-            parent.left = new Node<>(key, value, node);
+            parent.left = new Node<>(key, value, parent);
         } else if (result > 0) {
-            parent.right = new Node<>(key, value, node);
+            parent.right = new Node<>(key, value, parent);
         } else {
             V oldValue = parent.value;
             parent.value = value;
@@ -232,34 +240,6 @@ public class TreeMap<K, V> implements IMap<K, V> {
                 node.parent = null;
             } else {
                 root = null;
-            }
-        }
-
-        // Start fixup at replacement node, if it exists.
-        Node<K, V> replacement = (node.left != null ? node.left : node.right);
-
-        if (replacement != null) {
-            // Link replacement to parent
-            replacement.parent = node.parent;
-            if (node.parent == null) {
-                root = replacement;
-            } else if (node == node.parent.left) {
-                node.parent.left = replacement;
-            } else {
-                node.parent.right = replacement;
-            }
-
-            node.left = node.right = node.parent = null;
-        } else if (node.parent == null) { // return if we are the only node.
-            root = null;
-        } else { //  No children. Use self as phantom replacement and unlink.
-            if (node.parent != null) {
-                if (node == node.parent.left) {
-                    node.parent.left = null;
-                } else if (node == node.parent.right) {
-                    node.parent.right = null;
-                }
-                node.parent = null;
             }
         }
     }
