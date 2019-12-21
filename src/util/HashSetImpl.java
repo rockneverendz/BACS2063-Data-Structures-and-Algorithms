@@ -12,7 +12,7 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
     // https://www.baeldung.com/java-hashcode
     // implement hashCode() inside object classes 
     // so Object.hash() can use it effectively.
-    static class Node<K, V> {
+    static class Node<K, V> implements IMap.IEntry<K, V> {
 
         final int hash; // The hash of the key (Immutable)
         final K key; // The key (Also immutable)
@@ -26,22 +26,14 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
             this.value = value;
         }
 
-        public final K getKey() {
-            return key;
-        }
-
-        public final V getValue() {
-            return value;
-        }
-
         public final boolean equals(Object object) {
             if (object == this) {
                 return true;
             }
             if (object instanceof Node) {
                 Node<?, ?> node = (Node<?, ?>) object;
-                if (Objects.equals(this.key, node.getKey())
-                        && Objects.equals(this.value, node.getValue())) {
+                if (Objects.equals(this.key, node.key)
+                        && Objects.equals(this.value, node.value)) {
                     return true;
                 }
             }
@@ -352,8 +344,8 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
     }
 
     /*
-     * https://stackoverflow.com/questions/51118300
      * Description  : Returns x where (x > cap) and x is a power of 2
+     *                https://stackoverflow.com/questions/51118300
      * Return       : x where (x > cap) and x is a power of 2
      */
     private int tableSizeFor(int cap) {
