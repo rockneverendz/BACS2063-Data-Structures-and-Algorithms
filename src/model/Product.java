@@ -2,10 +2,10 @@ package model;
 
 public class Product {
 
-    private String name;
-    private Double price;
-    private int stock;
-    private String brand;
+    protected String name;
+    protected Double price;
+    protected int stock;
+    protected String brand;
 
     public Product() {
     }

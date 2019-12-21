@@ -2,7 +2,7 @@ package util;
 
 import java.util.Objects;
 
-public class HashSetImpl<K, V> implements IMap<K, V> {
+public class HashMapImpl<K, V> implements IMap<K, V> {
 
     transient Node<K, V>[] table;
     final private double loadFactor;
@@ -47,11 +47,11 @@ public class HashSetImpl<K, V> implements IMap<K, V> {
                 : key.hashCode();
     }
 
-    public HashSetImpl() {
+    public HashMapImpl() {
         this.loadFactor = 0.75;
     }
 
-    public HashSetImpl(int capacity) {
+    public HashMapImpl(int capacity) {
         this.loadFactor = 0.75;
         this.threshold = tableSizeFor(capacity);
     }

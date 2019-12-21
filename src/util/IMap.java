@@ -1,6 +1,10 @@
 package util;
 
 public interface IMap<K, V> {
+    /*
+     * Why it's called Map instead of Dictionary?
+     * https://stackoverflow.com/questions/2884068
+     */
 
     /*
      * Description  : Returns the number of key-value mappings in this map.
@@ -72,4 +76,7 @@ public interface IMap<K, V> {
      * Return       :
      */
     void clear();
+    
+    interface IEntry<K, V> {
+    }
 }

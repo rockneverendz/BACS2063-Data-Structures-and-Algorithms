@@ -1,13 +1,8 @@
 package util;
 
-public class MergeSort {
+public class ArrayImpl implements IArray {
 
-    /*
-     * Description  : Apply Merge Sorting algorithm to the array
-     * Precondition :
-     * Postcondition: Array is sorted at the given range 
-     * Return       :
-     */
+    @Override
     public void mergeSort(Object[] a, int low, int high, IComparator c) {
         // the array to be sorted is a[low..high]
         if (low < high) { // base case: low >= high (0 or 1 item)
