@@ -297,13 +297,11 @@ public class HashMapImpl<K, V> implements IMap<K, V> {
         return size == 0;
     }
 
-    @Override
     public boolean containsKey(Object key) {
         V value = get(key);
         return (value != null);
     }
 
-    @Override
     public boolean containsValue(Object value) {
         Node<K, V>[] tab;
         V v;

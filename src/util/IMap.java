@@ -52,24 +52,6 @@ public interface IMap<K, V> {
     boolean isEmpty();
 
     /*
-     * Description  : Returns true if this map contains a mapping for the specified key.
-     * Precondition : 
-     * Postcondition: 
-     * Return       : true  - this map contains a mapping for the specified key.
-     *                false - this map contains no mapping for the specified key.
-     */
-    boolean containsKey(Object key);
-
-    /*
-     * Description  : Returns true if this map maps one or more keys to the specified value.
-     * Precondition : 
-     * Postcondition: 
-     * Return       : true  - this map maps one or more keys to the specified value.
-                      false - no key maps to the specified value.
-     */
-    boolean containsValue(Object value);
-
-    /*
      * Description  : Removes all of the mappings from this map.
      * Precondition : 
      * Postcondition: The map will be empty
