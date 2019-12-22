@@ -140,7 +140,7 @@ public class MainGUI extends javax.swing.JFrame {
     private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
         FilterUI filterUi = new FilterUI();
         filterUi.setVisible(true);
-
+        
     }//GEN-LAST:event_btnFilterActionPerformed
 
     private void btnHashingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHashingActionPerformed
@@ -196,7 +196,7 @@ public class MainGUI extends javax.swing.JFrame {
             public void run() {
 
                 new MainGUI().setVisible(true);
-                initLaptops();
+                
             }
         });
     }
@@ -285,13 +285,13 @@ public class MainGUI extends javax.swing.JFrame {
 
         };
 
-        for (CPU cpuList : processors) {
-            System.out.println(cpuList.toString() + " test run");
-        }
-
-        for (GPU gpuList : graphics) {
-            System.out.println(gpuList.toString() + " test run");
-        }
+//        for (CPU cpuList : processors) {
+//            System.out.println(cpuList.toString() + " test run");
+//        }
+//
+//        for (GPU gpuList : graphics) {
+//            System.out.println(gpuList.toString() + " test run");
+//        }
         
         LinkedListImpl<Laptop> laptopsList = new LinkedListImpl<>();
 
