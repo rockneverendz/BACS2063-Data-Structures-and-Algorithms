@@ -3,6 +3,10 @@ package util;
 public class ArrayImpl implements IArray {
 
     @Override
+    public void sort(Object[] a, IComparator c) {
+        this.mergeSort(a, 0, a.length - 1, c);
+    }
+
     public void mergeSort(Object[] a, int low, int high, IComparator c) {
         // the array to be sorted is a[low..high]
         if (low < high) { // base case: low >= high (0 or 1 item)
@@ -45,5 +49,14 @@ public class ArrayImpl implements IArray {
         for (int k = 0; k < n; k++) {
             a[low + k] = temp[k]; // copy back
         }
+    }
+    
+    public static String toString(Object[] o){
+        StringBuilder sb = new StringBuilder();
+        for (Object object : o) {
+            sb.append(object.toString());
+            sb.append('\n');
+        }
+        return sb.toString();
     }
 }

@@ -303,6 +303,8 @@ public class LinkedListImpl<E>
                 .append(tail)
                 .append("}\n");
         
+        sb.append("name, brand, price, stock, model, Processor.getModel(), Graphics.getModel(), memory, storage, display, weight, color\n");
+        
         Node<E> node = head;
         while(node != null) {
             sb.append(node.data.toString());

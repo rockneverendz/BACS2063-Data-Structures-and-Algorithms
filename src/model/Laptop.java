@@ -105,7 +105,9 @@ public class Laptop
 
     @Override
     public String toString() {
-        return "Laptop{" + "model=" + model + ", Processor=" + Processor + ", Graphics=" + Graphics + ", memory=" + memory + ", storage=" + storage + ", display=" + display + ", weight=" + weight + ", color=" + color + '}';
+        return String.format(
+                "%-50s %-20s %20s %20s %-20s %-20s %-20s %20s %20s %20s %20s %-20s",
+                name, brand, price, stock, model, Processor.getModel(), Graphics.getModel(), memory, storage, display, weight, color);
     }
 
     @Override
@@ -118,6 +120,14 @@ public class Laptop
         @Override
         public int compare(Laptop origin, Laptop target) {
             return origin.getPrice().compareTo(target.getPrice());
+        }
+    }
+    
+    public static class SortLaptopByModel implements IComparator<Laptop> {
+
+        @Override
+        public int compare(Laptop origin, Laptop target) {
+            return origin.getModel().compareTo(target.getModel());
         }
     }
 
