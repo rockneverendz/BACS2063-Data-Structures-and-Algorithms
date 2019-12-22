@@ -5,7 +5,7 @@ import util.IComparator;
 
 public class Laptop 
         extends Product 
-        implements IComparable<Laptop> 
+        implements IComparable<Laptop>
 {
 
     private String model;
