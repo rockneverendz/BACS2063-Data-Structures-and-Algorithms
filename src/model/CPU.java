@@ -58,16 +58,25 @@ public class CPU {
 
     public static class FilterProcessor implements IFilter<CPU> {
 
-        private final String model;
+        private String model;
 
-        private final int mincores;
+        private int mincores;
 
-        private final int maxCores;
+        private int maxCores;
 
-        private final double minClockSpeed;
-        private final double maxClockSpeed;
+        private double minClockSpeed;
+        private double maxClockSpeed;
 
-        private final String brand;
+        private String brand;
+
+        public FilterProcessor() {
+            this.model = null;
+            this.mincores = 0;
+            this.maxCores = 0;
+            this.minClockSpeed = 0;
+            this.maxClockSpeed = 0;
+            this.brand = null;
+        }
         
         public FilterProcessor(String model, int mincores, int maxCores, double minClockSpeed, double maxClockSpeed, String brand) {
             this.model = model;
@@ -75,6 +84,22 @@ public class CPU {
             this.maxCores = maxCores;
             this.minClockSpeed = minClockSpeed;
             this.maxClockSpeed = maxClockSpeed;
+            this.brand = brand;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public void setModel(String model) {
+            this.model = model;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public void setBrand(String brand) {
             this.brand = brand;
         }
 

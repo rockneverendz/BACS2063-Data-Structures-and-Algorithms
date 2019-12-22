@@ -21,7 +21,7 @@ public class MockData {
         new CPU("Intel Core i3", 2, 3.0, "Intel"),
         new CPU("Intel Core i5", 2, 4.2, "Intel"), //10
         new CPU("Intel Core i7", 2, 4.2, "Intel"),
-        new CPU("Intel Core i9", 2, 4.8, "Intel")
+        new CPU("Intel Core i9", 2, 4.8, "Intel")//12
     };        //12
 
     GPU graphics[] = {

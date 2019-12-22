@@ -123,24 +123,39 @@ public class Laptop
 
     public static class FilterLaptop implements IFilter<Laptop> {
 
-        private final String model;
+        private String model;
 
-        private final FilterProcessor processorFilter;
-        private final FilterGraphics graphicsFilter;
+        private FilterProcessor processorFilter;
+        private FilterGraphics graphicsFilter;
 
-        private final int minMemory;
-        private final int maxMemory;
+        private int minMemory;
+        private int maxMemory;
 
-        private final int minStorage;
-        private final int maxStorage;
+        private int minStorage;
+        private int maxStorage;
 
-        private final double minDisplay;
-        private final double maxDisplay;
+        private double minDisplay;
+        private double maxDisplay;
 
-        private final double minWeight;
-        private final double maxWeight;
+        private double minWeight;
+        private double maxWeight;
 
-        private final String color;
+        private String color;
+
+        public FilterLaptop() {
+            this.model = null;
+            this.processorFilter = new FilterProcessor();
+            this.graphicsFilter = new FilterGraphics();
+            this.minMemory = 0;
+            this.maxMemory = 0;
+            this.minStorage = 0;
+            this.maxStorage = 0;
+            this.minDisplay = 0;
+            this.maxDisplay = 0;
+            this.minWeight = 0;
+            this.maxWeight = 0;
+            this.color = null;
+        }
 
         public FilterLaptop(String model, FilterProcessor processorFilter, FilterGraphics graphicsFilter, int minMemory, int maxMemory, int minStorage, int maxStorage, double minDisplay, double maxDisplay, double minWeight, double maxWeight, String color) {
             this.model = model;
@@ -155,6 +170,14 @@ public class Laptop
             this.minWeight = minWeight;
             this.maxWeight = maxWeight;
             this.color = color;
+        }
+
+        public FilterProcessor getProcessorFilter() {
+            return processorFilter;
+        }
+
+        public void setProcessorFilter(FilterProcessor processorFilter) {
+            this.processorFilter = processorFilter;
         }
 
         @Override

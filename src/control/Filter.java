@@ -1,6 +1,6 @@
 package control;
 
-import java.util.Iterator;
+import java.util.Scanner;
 import model.CPU.FilterProcessor;
 import model.GPU.FilterGraphics;
 import model.Laptop;
@@ -12,13 +12,12 @@ import util.LinkedListImpl;
 public class Filter {
 
     public static void main(String[] args) {
-        /*
-        get user filter criteria
-        make a filter out of the requirements
-        use filter through the datalist
-        return filtered result
-         */
-        //Laptop variables
+        LinkedListImpl<Laptop> LaptopList = new MockData().getLinkedList();
+        LinkedListImpl<Laptop> result = new LinkedListImpl();
+        FilterImpl<Laptop> filterImpl;
+        String temp;
+        Scanner sc = new Scanner(System.in);  // Create a Scanner object
+
         String model = null;
         int minMemory = 0;
         int maxMemory = 0;
@@ -41,10 +40,20 @@ public class Filter {
         //GPU variables
         String GPUmodel = null;
         int GPUminMemory = 0;
-        int GPUmaxMemory = 2;
+        int GPUmaxMemory = 0;
         String GPUbrand = null;
 
-        FilterProcessor fp = new FilterProcessor(
+        System.out.println("Leave blank to skip");
+        System.out.print("Enter laptop brand   : ");
+        model = "".equals(temp = sc.nextLine()) ? null : temp;
+        System.out.print("Enter processor name : ");
+        CPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
+        System.out.print("Enter graphics name  : ");
+        GPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
+        System.out.print("Enter color          : ");
+        color = "".equals(temp = sc.nextLine()) ? null : temp;
+ 
+        FilterProcessor filterProcessor = new FilterProcessor(
                 CPUmodel,
                 CPUminCores,
                 CPUmaxCores,
@@ -53,17 +62,17 @@ public class Filter {
                 CPUbrand
         );
 
-        FilterGraphics fg = new FilterGraphics(
+        FilterGraphics filterGraphics = new FilterGraphics(
                 GPUmodel,
                 GPUminMemory,
                 GPUmaxMemory,
                 GPUbrand
         );
 
-        FilterLaptop fl = new FilterLaptop(
+        FilterLaptop filterLaptop = new FilterLaptop(
                 model,
-                fp,
-                fg,
+                filterProcessor,
+                filterGraphics,
                 minMemory,
                 maxMemory,
                 minStorage,
@@ -75,17 +84,13 @@ public class Filter {
                 color
         );
         
-        MockData md = new MockData();
-        LinkedListImpl<Laptop> ll = md.getLinkedList();
-        LinkedListImpl<Laptop>  llresult = new LinkedListImpl();
-        Iterator lli = ll.iterator();
+        filterImpl = new FilterImpl<>(LaptopList.iterator(), filterLaptop);
 
-        FilterImpl<Laptop> filterImpl = new FilterImpl<>(lli, fl);
-
-        while (filterImpl.hasNext()){
-            llresult.add(filterImpl.next());
+        while (filterImpl.hasNext()) {
+            result.add(filterImpl.next());
         }
+
+        System.out.println(result.toString());
         
-        System.out.println(llresult.toString());
     }
 }

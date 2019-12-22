@@ -55,6 +55,13 @@ public class GPU {
 
         private final String brand;
 
+        public FilterGraphics() {
+            this.model = null;
+            this.minMemory = 0;
+            this.maxMemory = 0;
+            this.brand = null;
+        }
+
         public FilterGraphics(String model, int minMemory, int maxMemory, String brand) {
             this.model = model;
             this.minMemory = minMemory;
