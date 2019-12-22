@@ -59,7 +59,7 @@ public class TreeMap<K, V> implements IMap<K, V> {
     }
 
     private Node<K, V> getNodeDefault(Object key) {
-        IComparable<? super K> k = (IComparable<? super K>) key;
+        Comparable<? super K> k = (Comparable<? super K>) key;
         Node<K, V> node = root;
         while (node != null) {
             int result = k.compareTo(node.key);
