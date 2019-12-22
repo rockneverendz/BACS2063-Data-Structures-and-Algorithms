@@ -6,6 +6,7 @@
 package view;
 
 import model.*;
+import util.LinkedListImpl;
 
 /**
  *
@@ -29,214 +30,138 @@ public class MainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btnFilter = new javax.swing.JButton();
+        btnDuplicate = new javax.swing.JButton();
+        btnBinarySearch = new javax.swing.JButton();
+        btnSort = new javax.swing.JButton();
+        btnHashing = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Search Engine");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Search Bar"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Product-Laptop Search Engine System"));
 
-        jLabel1.setText("Search: ");
+        jLabel1.setText("Menu: ");
 
-        jButton1.setText("Binary Tree Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFilter.setText("Filter");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnFilterActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Normal Search");
+        btnDuplicate.setText("Duplicate Check");
+        btnDuplicate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDuplicateActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+        btnBinarySearch.setText("Binary Tree Search");
+        btnBinarySearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBinarySearchActionPerformed(evt);
+            }
+        });
+
+        btnSort.setText("Sorting");
+        btnSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortActionPerformed(evt);
+            }
+        });
+
+        btnHashing.setText("Hashing");
+        btnHashing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHashingActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDuplicate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBinarySearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSort, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHashing, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Filter"));
-
-        jLabel2.setText("Filter By CPU: ");
-
-        jCheckBox3.setText("i-3");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox1.setText("i-5");
-
-        jCheckBox2.setText("i-7");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jCheckBox3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Results"));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-        );
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Sort"));
-        jPanel4.setToolTipText("");
-
-        jLabel3.setText("Sort by :");
-
-        jRadioButton1.setText("jRadioButton1");
-
-        jRadioButton2.setText("jRadioButton2");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton2)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton1)))
-                .addContainerGap(128, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jRadioButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(btnDuplicate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBinarySearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHashing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        FilterUI filterUi = new FilterUI();
+        filterUi.setVisible(true);
 
-        GPU graphics = new GPU("Intel HD", 500, "Intel");
-        CPU processor = new CPU("i3-10110U", 2, 4.10, "Intel");
-        Laptop laptop = new Laptop("MSI Modern 14 A10M", "MSI", 3499.00, 23, "Modern 14 A10M", processor, graphics, 8, 256, 14.00, 1.19, "Black");
+    }//GEN-LAST:event_btnFilterActionPerformed
 
-        System.out.println(laptop.toString());
+    private void btnHashingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHashingActionPerformed
+        HashingUI hashUI = new HashingUI();
+        hashUI.setVisible(true);
+    }//GEN-LAST:event_btnHashingActionPerformed
 
-        jTextArea1.setText(laptop.toString());
+    private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
+        DuplicateCheckUI dcUI = new DuplicateCheckUI();
+        dcUI.setVisible(true);
+    }//GEN-LAST:event_btnDuplicateActionPerformed
 
-       // initLaptops();
+    private void btnBinarySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBinarySearchActionPerformed
+        BinaryTreeSearchUI btsUI = new BinaryTreeSearchUI();
+        btsUI.setVisible(true);
+    }//GEN-LAST:event_btnBinarySearchActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
-
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        MergeSortUI msUI = new MergeSortUI();
+        msUI.setVisible(true);
+    }//GEN-LAST:event_btnSortActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,67 +196,119 @@ public class MainGUI extends javax.swing.JFrame {
             public void run() {
 
                 new MainGUI().setVisible(true);
-
+                initLaptops();
             }
         });
     }
 
-    private void initLaptops() {
+    private static void initLaptops() {
 
         //Variables declaration
         CPU processors[] = {
-            new CPU("AMD A6", 500, 2.7, "AMD "),
+            new CPU("AMD A6", 500, 2.7, "AMD "), //0
             new CPU("AMD A8", 2, 2.7, "AMD "),
             new CPU("AMD A9", 2, 2.7, "AMD "),
             new CPU("AMD A10", 2, 2.9, "AMD"),
             new CPU("AMD A12", 2, 2.9, "AMD"),
-            new CPU("AMD E1", 2, 2.9, "AMD"),
+            new CPU("AMD E1", 2, 2.9, "AMD"), //5
             new CPU("AMD E2", 2, 2.9, "AMD"),
-            new CPU("Intel Celeron", 2, 3.0, "Intel"),
-            new CPU("Intel Pentium", 2, 3.0 , "Intel"),
+            new CPU("Intel Celeron", 2, 3.0, "Intel"), //7
+            new CPU("Intel Pentium", 2, 3.0, "Intel"),
             new CPU("Intel Core i3", 2, 3.0, "Intel"),
-            new CPU("Intel Core i5", 2, 4.2, "Intel"),
+            new CPU("Intel Core i5", 2, 4.2, "Intel"), //10
             new CPU("Intel Core i7", 2, 4.2, "Intel"),
-            new CPU("Intel Core i9", 2, 4.8, "Intel"),
-        };
-        
+            new CPU("Intel Core i9", 2, 4.8, "Intel"),};        //12
+
         GPU graphics[] = {
-            new GPU("GeForce RTX", 4, "Nvidia"),
+            new GPU("GeForce RTX", 4, "Nvidia"), //0
             new GPU("GeForce GTX", 3, "Nvidia"),
             new GPU("Radeon Vega", 4, "AMD"),
-            new GPU("Radeon RX", 4, "AMD"),
+            new GPU("Radeon RX", 4, "AMD"), //3
             new GPU("Radeon R9", 3, "AMD"),
             new GPU("Radeon R7", 2, "AMD"),
-            new GPU("Radeon R5", 2, "AMD"),
-        };
+            new GPU("Radeon R5", 2, "AMD"),};       //6
+
+        Laptop laptops[] = {
+            new Laptop("Asus ZenBook 14", "Asus", 2099.00, 42, "ZenBook 14", processors[7], graphics[6], 4, 256, 14.00, 1.19, "Black"),
+            new Laptop("Asus ZenBook Flip 14", "Asus", 3500.00, 56, "ZenBook Flip 14", processors[8], graphics[6], 4, 256, 14.00, 1.19, "Black"),
+            new Laptop("Asus VivoBook 14 X403", "Asus", 3559.00, 61, "ROG Zephyrus G GA502", processors[10], graphics[6], 4, 256, 14.00, 1.19, "Black"),
+            new Laptop("Asus ROG Zephyrus M GU502", "Asus", 3299.00, 24, "VivoBook 14 X403", processors[9], graphics[5], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Asus ROG Zephyrus G GA502", "Asus", 3499.00, 32, "ROG Zephyrus M GU502", processors[10], graphics[4], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Asus VivoBook 14 X412FA-E", "Asus", 2599.00, 30, "VivoBook 14 X412FA-E", processors[10], graphics[4], 8, 256, 14.00, 1.19, "Black"),
+            new Laptop("Asus VivoBook 14 X412", "Asus", 2799.00, 40, "VivoBook 14 X412", processors[10], graphics[1], 8, 256, 14.00, 1.19, "Black"),
+            new Laptop("Asus ROG Strix SCAR II", "Asus", 3499.00, 48, "ROG Strix SCAR II", processors[10], graphics[1], 16, 256, 15.00, 1.19, "Black"),
         
+            new Laptop("Dell XPS 13 2-in-1 7390", "Dell", 2599.00, 59, "XPS 13 2-in-1 7390", processors[9], graphics[6], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell G7 15 7590", "Asus", 3499.00, 71, "G7 15 7590", processors[2], graphics[4], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell Inspiron 15 5580", "Asus", 2099.00, 33, "Inspiron 15 5580", processors[8], graphics[6], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell Inspiron I5481-5076GRY", "Asus", 2599.00, 13, "Inspiron I5481-5076GRY", processors[7], graphics[5], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell G3579-5958BLK", "Asus", 3499.00, 53, "G3579-5958BLK", processors[0], graphics[6], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell ChromeBook C3181-C895GRY", "Asus", 3299.00, 76, "ChromeBook C3181-C895GRY ", processors[10],graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell Inspiron 7375", "Asus", 3499.00, 14, "Inspiron 7375", processors[8], graphics[1], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Dell Inspiron 15 I5570-5262SLV", "Asus", 3559.00, 65, "Inspiron 15 I5570-5262SLV", processors[11],graphics[3], 8, 256, 15.00, 1.19, "Black"),
+
+            new Laptop("HP 15Q-DS0029TU", "HP", 2599.00, 67, "15Q-DS0029TU", processors[11],graphics[3], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP Pavilion 15-BC444TX", "HP", 3499.00, 10, "Pavilion 15-BC444TX", processors[0], graphics[0], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP Spectre x360 LTE", "HP", 2099.00, 69, "Spectre x360 LTE", processors[4], graphics[5], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP ZBook 17 G6", "HP", 2599.00, 10, "ZBook 17 G6", processors[1], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP Spectre x360 13-ap010", "HP", 3499.00, 15, "Spectre x360 13-ap010", processors[2], graphics[0], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP Notebook 15-da0295tu", "HP", 3299.00, 51, "Notebook 15-da0295tu ", processors[7], graphics[0], 16, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP Omen X 2S", "HP", 3499.00, 27, "Omen X 2S", processors[8], graphics[2], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("HP Envy x360 13-AG0035AU", "HP", 3559.00, 11, "Envy x360 13-AG0035AU", processors[4], graphics[6], 16, 256, 15.00, 1.19, "Black"),
+
+            new Laptop("MSI Modern 14 A10M", "MSI", 2099.00, 30, "Modern 14 A10M", processors[9], graphics[0], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI Modern 15 A10RB", "MSI", 2599.00, 45, "Modern 15 A10RB", processors[5], graphics[0], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI GT76 DT-9SG Titan", "MSI", 3499.00, 75, "GT76 DT-9SG Titan", processors[2], graphics[0], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI PS63 Modern 8RC", "MSI", 3299.00, 21, "PS63 Modern 8RC  ", processors[9], graphics[1], 16, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI Stealth GS73", "MSI", 2599.00, 42, "Stealth GS73", processors[1], graphics[1], 16, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI Stealth GS65", "MSI", 3499.00, 74, "Stealth GS65", processors[7], graphics[1], 16, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI Raider GE73", "MSI", 3299.00, 34, "Raider GE73", processors[7], graphics[1], 16, 256, 15.00, 1.19, "Black"),
+            new Laptop("MSI GL63 8RD-067", "MSI", 3499.00, 30, "GL63 8RD-067", processors[7], graphics[1], 16, 256, 15.00, 1.19, "Black"),
+
+            new Laptop("Lenovo Legion Y740", "Lenovo", 2099.00, 62, "Legion Y740", processors[2], graphics[4], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo Yoga S940", "Lenovo", 3500.00, 44, "Yoga S940", processors[8], graphics[4], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo Lenovo Ideapad 330-15ARR", "Lenovo", 3559.00, 34, "Lenovo Ideapad 330-15ARR", processors[9], graphics[3], 4, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo Ideapad 330-151IGM", "Lenovo", 3299.00, 44, "Ideapad 330-151IGM", processors[0], graphics[3], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo ThinkPad X1 Extreme", "Lenovo", 3499.00, 78, "ThinkPad X1 Extreme", processors[6], graphics[2], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo IdeaPad", "Lenovo", 2599.00, 59, "IdeaPad", processors[3], graphics[2], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo Yoga 20LES4S500", "Lenovo", 2799.00, 77, "Yoga 20LES4S500", processors[8], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Lenovo IdeaPad 330-15ARR", "Lenovo", 3499.00, 66, "IdeaPad 330-15ARR", processors[4], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+
+            new Laptop("Apple MacBook Air MREA2HN/A", "Apple", 4499.00, 66, "MacBook Air MREA2HN/A", processors[11], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Air MRE82HN/A", "Apple", 4499.00, 66, "MacBook Air MRE82HN/A", processors[11], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Air MREC2HN/A", "Apple", 4499.00, 66, "MacBook Air MREC2HN/A", processors[11], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Air MREE2HN/A", "Apple", 5499.00, 66, "MacBook Air MREE2HN/A", processors[11], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Air MRE92HN/A", "Apple", 5499.00, 66, "MacBook Air MRE92HN/A", processors[12], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Pro MR932HN/A", "Apple", 4499.00, 66, "MacBook Pro MR932HN/A", processors[11], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Pro MR962HN/A", "Apple", 5499.00, 66, "MacBook Pro MR962HN/A", processors[12], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+            new Laptop("Apple MacBook Pro MR9Q2HN/A", "Apple", 5499.00, 66, "MacBook Pro MR9Q2HN/A", processors[12], graphics[1], 8, 256, 15.00, 1.19, "Black"),
+
+        };
+
         for (CPU cpuList : processors) {
             System.out.println(cpuList.toString() + " test run");
         }
-        
+
         for (GPU gpuList : graphics) {
             System.out.println(gpuList.toString() + " test run");
+        }
+        
+        LinkedListImpl<Laptop> laptopsList = new LinkedListImpl<>();
+
+        for (int i = 0; i < laptops.length; i++) {
+            laptopsList.add(laptops[i]);
+            System.out.println(laptopsList.get(i).toString());
         }
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JButton btnBinarySearch;
+    private javax.swing.JButton btnDuplicate;
+    private javax.swing.JButton btnFilter;
+    private javax.swing.JButton btnHashing;
+    private javax.swing.JButton btnSort;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
