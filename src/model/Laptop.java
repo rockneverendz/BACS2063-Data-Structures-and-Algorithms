@@ -1,12 +1,14 @@
 package model;
 
+import model.CPU.FilterProcessor;
+import model.GPU.FilterGraphics;
 import util.IComparable;
 import util.IComparator;
+import util.IFilter;
 
-public class Laptop 
-        extends Product 
-        implements IComparable<Laptop>
-{
+public class Laptop
+        extends Product
+        implements IComparable<Laptop> {
 
     private String model;
     private CPU Processor;
@@ -118,5 +120,94 @@ public class Laptop
             return origin.getPrice().compareTo(target.getPrice());
         }
     }
-}
 
+    public static class FilterLaptop implements IFilter<Laptop> {
+
+        private final String model;
+
+        private final FilterProcessor processorFilter;
+        private final FilterGraphics graphicsFilter;
+
+        private final int minMemory;
+        private final int maxMemory;
+
+        private final int minStorage;
+        private final int maxStorage;
+
+        private final double minDisplay;
+        private final double maxDisplay;
+
+        private final double minWeight;
+        private final double maxWeight;
+
+        private final String color;
+
+        public FilterLaptop(String model, FilterProcessor processorFilter, FilterGraphics graphicsFilter, int minMemory, int maxMemory, int minStorage, int maxStorage, double minDisplay, double maxDisplay, double minWeight, double maxWeight, String color) {
+            this.model = model;
+            this.processorFilter = processorFilter;
+            this.graphicsFilter = graphicsFilter;
+            this.minMemory = minMemory;
+            this.maxMemory = maxMemory;
+            this.minStorage = minStorage;
+            this.maxStorage = maxStorage;
+            this.minDisplay = minDisplay;
+            this.maxDisplay = maxDisplay;
+            this.minWeight = minWeight;
+            this.maxWeight = maxWeight;
+            this.color = color;
+        }
+
+        @Override
+        public boolean matches(Laptop element) {
+            if (model != null && !model.equals(element.model)) {
+                return false;
+            }
+
+            if (processorFilter != null && !processorFilter.matches(element.Processor)) {
+                return false;
+            }
+
+            if (graphicsFilter != null && !graphicsFilter.matches(element.Graphics)) {
+                return false;
+            }
+
+            if (minMemory != 0 && !(minMemory <= element.memory)) {
+                return false;
+            }
+
+            if (maxMemory != 0 && !(element.memory <= maxMemory)) {
+                return false;
+            }
+
+            if (minStorage != 0 && !(minStorage <= element.storage)) {
+                return false;
+            }
+
+            if (maxStorage != 0 && !(element.storage <= maxStorage)) {
+                return false;
+            }
+
+            if (minDisplay != 0 && !(minDisplay <= element.display)) {
+                return false;
+            }
+
+            if (maxDisplay != 0 && !(element.display <= maxDisplay)) {
+                return false;
+            }
+
+            if (minWeight != 0 && !(minWeight <= element.weight)) {
+                return false;
+            }
+
+            if (maxWeight != 0 && !(element.weight <= maxWeight)) {
+                return false;
+            }
+
+            if (color != null && !color.equals(element.color)) {
+                return false;
+            }
+
+            return true;
+        }
+    }
+}
