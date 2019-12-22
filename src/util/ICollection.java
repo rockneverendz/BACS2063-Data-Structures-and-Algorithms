@@ -1,6 +1,6 @@
 package util;
 
-public interface ICollection<E> {
+public interface ICollection<E> extends Iterable<E>{
 
     /*
      * Description  : Add element into collection

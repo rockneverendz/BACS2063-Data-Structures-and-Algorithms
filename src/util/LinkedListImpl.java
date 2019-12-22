@@ -1,5 +1,8 @@
 package util;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedListImpl<E>
         implements IList<E> {
     
@@ -287,5 +290,57 @@ public class LinkedListImpl<E>
         oldNode.next = null;
 
         size--;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("LinkedListImpl{size=")
+                .append(size)
+                .append(", head=")
+                .append(head)
+                .append(", tail=")
+                .append(tail)
+                .append("}\n");
+        
+        Node<E> node = head;
+        while(node != null) {
+            sb.append(node.data.toString());
+            sb.append('\n');
+            node = node.next;
+        }
+        
+        return sb.toString();
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListIterator();
+    }
+    
+    private class LinkedListIterator implements Iterator<E> {
+        private Node<E> lastReturned;
+        private Node<E> next;
+        private int nextIndex;
+
+        LinkedListIterator() {
+            next = head;
+            nextIndex = 0;
+        }
+
+        public boolean hasNext() {
+            return nextIndex < size;
+        }
+
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+
+            lastReturned = next;
+            next = next.next;
+            nextIndex++;
+            return lastReturned.data;
+        }
     }
 }
