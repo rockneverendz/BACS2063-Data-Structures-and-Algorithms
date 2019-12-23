@@ -17,17 +17,25 @@ public class Dupe {
             LaptopList.add(temp[i]);
         }
         
+        
         System.out.println("With duplicates");
         System.out.println(LaptopList);
         
+        final long START = System.nanoTime();
         dupeChecker = new DupeImpl(LaptopList.iterator());
         
         while (dupeChecker.hasNext()) {
             result.add(dupeChecker.next());
         }
+        
+        final long END = System.nanoTime();
 
         System.out.println("Without duplicates");
         System.out.println(result.toString());
+        
+        
+        
+        System.out.println("Time taken : " + ((END - START) / 1e+9) + "seconds");
 
     }
 }

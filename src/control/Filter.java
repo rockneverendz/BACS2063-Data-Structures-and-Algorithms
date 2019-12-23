@@ -12,6 +12,7 @@ import util.LinkedListImpl;
 public class Filter {
 
     public static void main(String[] args) {
+        
         LinkedListImpl<Laptop> LaptopList = new MockData().getLinkedList();
         LinkedListImpl<Laptop> result = new LinkedListImpl();
         FilterImpl<Laptop> filterImpl;
@@ -43,17 +44,18 @@ public class Filter {
         int GPUmaxMemory = 0;
         String GPUbrand = null;
 
-        System.out.println("Leave blank to skip");
-        System.out.print("Enter model name   : ");
-        minMemory = sc.nextInt();
-        sc.nextLine();
-        System.out.print("Enter processor name : ");
-        CPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
-        System.out.print("Enter graphics name  : ");
-        GPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
-        System.out.print("Enter color          : ");
-        color = "".equals(temp = sc.nextLine()) ? null : temp;
- 
+//        System.out.println("Leave blank to skip");
+//        System.out.print("Enter min RAM   : ");
+        minMemory = 8;
+//        sc.nextLine();
+//        System.out.print("Enter processor name : ");
+        CPUmodel = "Intel Core i7";
+//        CPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
+//        System.out.print("Enter graphics name  : ");
+//        GPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
+//        System.out.print("Enter color          : ");
+//        color = "".equals(temp = sc.nextLine()) ? null : temp;
+
         FilterProcessor filterProcessor = new FilterProcessor(
                 CPUmodel,
                 CPUminCores,
@@ -84,14 +86,20 @@ public class Filter {
                 maxWeight,
                 color
         );
-        
+
+        final long START = System.nanoTime();
+
         filterImpl = new FilterImpl<>(LaptopList.iterator(), filterLaptop);
 
         while (filterImpl.hasNext()) {
             result.add(filterImpl.next());
         }
 
+        final long END = System.nanoTime();
+
+        System.out.println("Time taken : " + ((END - START) / 1e+9) + "seconds");
+
         System.out.println(result.toString());
-        
+
     }
 }
