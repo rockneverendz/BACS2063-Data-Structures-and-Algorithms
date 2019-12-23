@@ -3,8 +3,11 @@ package util;
 public interface IFilter<T> {
     
     /**
-     * Determines whether elements should be filtered or not.
-     *
+     * Description  : Determines whether elements should be filtered or not.
+     * Precondition : -
+     * Postcondition: -
+     * Return       : true  = satisfy all criteria
+     *                false = does not satisfy one or more criteria
      */
     
     public boolean matches(T element);

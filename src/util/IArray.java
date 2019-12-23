@@ -4,9 +4,9 @@ public interface IArray {
     
     /*
      * Description  : Sort the array using the comparator provided
-     * Precondition : 
+     * Precondition : -
      * Postcondition: Array is sorted
-     * Return       : 
+     * Return       : -
      */
     public void sort(Object[] a, IComparator c);
     
