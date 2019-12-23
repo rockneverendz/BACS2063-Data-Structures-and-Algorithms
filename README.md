@@ -7,3 +7,6 @@
 | 3   | Tree search     | Yap Jun Yan           | By brand and processor spec               |
 | 4   | Indexing        | Brendan Chew Jian Wen | Hash according to name                    |
 | 5   | Sorting         | Jarrod Low Wee Horng  | Sort by name and price                    |
+
+## How to Run
+Run 'src/control/Menu.java'
