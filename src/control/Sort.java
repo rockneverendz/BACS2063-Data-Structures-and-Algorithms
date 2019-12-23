@@ -25,4 +25,5 @@ public class Sort {
         array.sort(LaptopList, new SortLaptopByModel());
         System.out.println(ArrayImpl.toString(LaptopList));
     }
+    
 }

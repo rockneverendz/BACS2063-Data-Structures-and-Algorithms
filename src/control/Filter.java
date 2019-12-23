@@ -44,8 +44,9 @@ public class Filter {
         String GPUbrand = null;
 
         System.out.println("Leave blank to skip");
-        System.out.print("Enter laptop brand   : ");
-        model = "".equals(temp = sc.nextLine()) ? null : temp;
+        System.out.print("Enter model name   : ");
+        minMemory = sc.nextInt();
+        sc.nextLine();
         System.out.print("Enter processor name : ");
         CPUmodel = "".equals(temp = sc.nextLine()) ? null : temp;
         System.out.print("Enter graphics name  : ");
