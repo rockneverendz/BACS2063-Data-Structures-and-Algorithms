@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * @author Jarrod
+ */
 public class ArrayImpl implements IArray {
 
     @Override

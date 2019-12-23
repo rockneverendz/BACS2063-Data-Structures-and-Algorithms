@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * @author Chia Wei Xiang
+ */
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

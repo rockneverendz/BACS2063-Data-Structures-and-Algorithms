@@ -3,6 +3,9 @@ package util;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * @author Soo Cia Yang
+ */
 public class FilterImpl<T> implements Iterator<T> {
 
     private Iterator<? extends T> iterator;

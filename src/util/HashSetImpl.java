@@ -2,6 +2,9 @@ package util;
 
 import java.util.Iterator;
 
+/**
+ * @author Brendan
+ */
 public class HashSetImpl<E> implements ISet<E> {
 
     private HashMapImpl<E, Object> map;

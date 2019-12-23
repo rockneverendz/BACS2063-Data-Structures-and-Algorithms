@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * @author Soo Cia Yang
+ */
 public interface IFilter<T> {
     
     /**

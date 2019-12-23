@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * @author Yap Jun Yan
+ */
 public class TreeMap<K, V> implements IMap<K, V> {
 
     private Node<K, V> root;

@@ -2,6 +2,9 @@ package util;
 
 import java.util.Objects;
 
+/**
+ * @author Brendan
+ */
 public class HashMapImpl<K, V> implements IMap<K, V> {
 
     transient Node<K, V>[] table;

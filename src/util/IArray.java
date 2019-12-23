@@ -1,5 +1,8 @@
 package util;
 
+/**
+ * @author Jarrod
+ */
 public interface IArray {
     
     /*
