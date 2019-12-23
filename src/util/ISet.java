@@ -6,18 +6,9 @@ public interface ISet<E> extends ICollection<E> {
      * Description  : Adds the specified element to this set if it is not already present
      * Precondition : Element not present in set
      * Postcondition: Element is added into set
-     * Return       : -
+     * Return       : true  = set did not already contain the specified element
      */
-    public void add(E e);
-
-    /*
-     * Description  : Adds all of the element(s) in the specified collection to this set 
-     *                if they're not already present present
-     * Precondition : Element(s) not present in set
-     * Postcondition: Element(s) is added into set
-     * Return       : -
-     */
-    public void addAll(ICollection<? extends E> c);
+    public boolean add(E e);
 
     /*
      * Description  : Removes all of the elements from this set

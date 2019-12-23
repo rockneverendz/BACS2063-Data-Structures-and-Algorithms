@@ -6,9 +6,9 @@ public interface ICollection<E> extends Iterable<E>{
      * Description  : Add element into collection
      * Precondition : -
      * Postcondition: Element is added into collection
-     * Return       : -
+     * Return       : true  - collection has changed
      */
-    public void add(E e);
+    public boolean add(E e);
 
     /*
      * Description  : Removes all of the elements from this collection
