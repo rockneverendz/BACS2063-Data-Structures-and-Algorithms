@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Objects;
 import util.IFilter;
 
 public class GPU {
@@ -39,6 +40,39 @@ public class GPU {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.model);
+        hash = 31 * hash + this.memory;
+        hash = 31 * hash + Objects.hashCode(this.brand);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GPU other = (GPU) obj;
+        if (this.memory != other.memory) {
+            return false;
+        }
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        return true;
     }
 
     @Override

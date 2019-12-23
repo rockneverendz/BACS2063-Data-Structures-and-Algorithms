@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Objects;
 import util.IFilter;
 
 public class CPU {
@@ -49,6 +50,43 @@ public class CPU {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.model);
+        hash = 89 * hash + this.cores;
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.clockSpeed) ^ (Double.doubleToLongBits(this.clockSpeed) >>> 32));
+        hash = 89 * hash + Objects.hashCode(this.brand);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CPU other = (CPU) obj;
+        if (this.cores != other.cores) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.clockSpeed) != Double.doubleToLongBits(other.clockSpeed)) {
+            return false;
+        }
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        return true;
     }
 
     @Override

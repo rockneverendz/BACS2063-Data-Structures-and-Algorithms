@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Objects;
 import model.CPU.FilterProcessor;
 import model.GPU.FilterGraphics;
 import util.IComparable;
@@ -101,6 +102,59 @@ public class Laptop
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.model);
+        hash = 79 * hash + Objects.hashCode(this.Processor);
+        hash = 79 * hash + Objects.hashCode(this.Graphics);
+        hash = 79 * hash + this.memory;
+        hash = 79 * hash + this.storage;
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.display) ^ (Double.doubleToLongBits(this.display) >>> 32));
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 79 * hash + Objects.hashCode(this.color);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Laptop other = (Laptop) obj;
+        if (this.memory != other.memory) {
+            return false;
+        }
+        if (this.storage != other.storage) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.display) != Double.doubleToLongBits(other.display)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
+            return false;
+        }
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        if (!Objects.equals(this.color, other.color)) {
+            return false;
+        }
+        if (!Objects.equals(this.Processor, other.Processor)) {
+            return false;
+        }
+        if (!Objects.equals(this.Graphics, other.Graphics)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
