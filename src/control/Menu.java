@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
 import static java.lang.System.exit;
@@ -17,10 +12,6 @@ import util.HashMapImpl;
 import util.LinkedListImpl;
 import util.TreeMap;
 
-/**
- *
- * @author usert
- */
 public class Menu {
 
     public static void main(String[] args) {
@@ -138,6 +129,7 @@ public class Menu {
                 result.add(laptop);
             } else {
                 LinkedListImpl<Laptop> newList = new LinkedListImpl();
+                newList.add(laptop);
                 brandTree.put(laptop.getBrand(), newList);
             }
         }
