@@ -16,7 +16,7 @@ public class Hash {
             hashByName.put(laptop.getName(), laptop);
         }
         
-        System.out.print("Enter laptop model   : ");
+        System.out.print("Enter product name   : ");
         String model = sc.nextLine();
         
         System.out.println(hashByName.get(model));
