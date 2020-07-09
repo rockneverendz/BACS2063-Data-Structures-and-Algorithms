@@ -92,7 +92,7 @@ public class HashMapImplTest {
             fail();
         }
 
-        if (instance.get(32) != laptop[2]) {
+        if (instance.get(2) != laptop[2]) {
             fail();
         }
 
